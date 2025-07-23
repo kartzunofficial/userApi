@@ -10,7 +10,7 @@ const conncetion = mysql.createConnection({
   database:process.env.DATABASE,
   port:process.env.PORT
 });
-app.listen(8080);
+app.listen(process.env.PORT);
 
 app.get("/users", (req, res)=>{
     conncetion.query("SELECT * FROM userData", (err, result)=>{
