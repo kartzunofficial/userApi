@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const mysql = require("mysql2");
 const app = express();
 const connection = mysql.createConnection({
@@ -9,6 +10,8 @@ const connection = mysql.createConnection({
     password:process.env.PASSWORD,
     port:process.env.PORT
 })
+
+app.use(cors());
 
 app.get("/users", (req, res)=>{
     connection.query("SELECT * FROM userData", (err,result)=>{
